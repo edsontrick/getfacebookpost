@@ -1,0 +1,27 @@
+<div class="container">
+	<br><br>
+	<div class="form-group">
+		<label for="id_post">Email address</label>
+		<input type="email" class="form-control" id="id_post" placeholder="ID do post">
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Perfil</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @json['data'] %>
+				<% @json['data'].sort_by!{ |m| m['from']['name'].downcase }.each do |data| %>
+				<tr>
+					<td><%= data['from']['name'] %></td>
+					<td><a href="https://fb.com/<%= data['from']['id'] %>">https://fb.com/<%= data['from']['id'] %></a></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
