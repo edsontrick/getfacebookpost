@@ -1,23 +1,17 @@
 <div class="container">
 	<br><br>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Perfil</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% if @json['data'] %>
-				<% @json['data'].sort_by!{ |m| m['from']['name'].downcase }.each do |data| %>
-				<tr>
-					<td><%= data['from']['name'] %></td>
-					<td><a href="https://fb.com/<%= data['from']['id'] %>">https://fb.com/<%= data['from']['id'] %></a></td>
-				</tr>
-				<% end %>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="col-md-4 col-md-offset-4">
+		<form action="/sharedposts" method="POST">
+		  	<input id="token" name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+			<div class="form-group">
+				<label for="exampleInputEmail1">ID da Página</label>
+				<input type="text" class="form-control" name="idpost" placeholder="ID da Página">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Token</label>
+				<input type="text" class="form-control" name="token" placeholder="Token">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
 </div>
-
-
