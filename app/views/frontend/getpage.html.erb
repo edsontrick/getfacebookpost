@@ -1,6 +1,12 @@
 <div class="container">
 	<br><br>
-	<table class="table table-hover">
+	<div class="form-group">
+		<label for="exampleInputEmail1">Sortear</label>
+	</div>
+	<p id="ganhador"></p>
+	<button type="submit" class="btn btn-default" id="sortear">Sortear</button>
+	<hr>
+	<table class="table table-hover" id="table">
 		<thead>
 			<tr>
 				<th>Nome</th>
@@ -11,7 +17,7 @@
 			<% if @json['data'] %>
 				<% @json['data'].sort_by!{ |m| m['from']['name'].downcase }.each do |data| %>
 				<tr>
-					<td><%= data['from']['name'] %></td>
+					<td class="item"><%= data['from']['name'] %></td>
 					<td><a href="https://fb.com/<%= data['from']['id'] %>">https://fb.com/<%= data['from']['id'] %></a></td>
 				</tr>
 				<% end %>
